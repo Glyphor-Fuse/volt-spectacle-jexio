@@ -2,6 +2,7 @@ import React from 'react';
 import { Check, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { CardSpotlight } from '@/components/ui/card-spotlight';
+import { SparklesCore } from '@/components/ui/sparkles-core';
 
 const TIERS = [
   {
