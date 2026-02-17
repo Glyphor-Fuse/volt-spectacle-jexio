@@ -1,6 +1,6 @@
 :root {
-  --font-display-family: Cinzel, serif;
-  --font-body-family: Cormorant Garamond, serif;
-  --font-display: var(--font-display-family);
-  --font-body: var(--font-body-family);
+  --font-body: Inter, sans-serif;
+  --font-display: Space Grotesk, sans-serif;
+  --font-display-family: var(--font-display);
+  --font-body-family: var(--font-body);
 }
