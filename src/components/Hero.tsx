@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { BackgroundBeamsWithCollision } from '@/components/ui/background-beams-with-collision';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 export const Hero = () => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   return (
     <div className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background">
       <BackgroundBeamsWithCollision>
@@ -27,7 +36,12 @@ export const Hero = () => {
               <Button size="lg" className="h-14 px-8 text-lg font-bold bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-[0_0_20px_rgba(188,44,255,0.4)] transition-all hover:scale-105 active:scale-95">
                 GET TICKETS NOW
               </Button>
-              <Button size="lg" variant="outline" className="h-14 px-8 text-lg font-bold border-accent/30 text-accent hover:bg-accent/10 rounded-full transition-all hover:scale-105 active:scale-95">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="h-14 px-8 text-lg font-bold border-accent/30 text-accent hover:bg-accent/10 rounded-full transition-all hover:scale-105 active:scale-95"
+                onClick={() => setIsVideoOpen(true)}
+              >
                 WATCH TRAILER
               </Button>
             </div>
@@ -38,6 +52,25 @@ export const Hero = () => {
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-30">
         <div className="w-px h-12 bg-gradient-to-b from-transparent via-accent to-transparent" />
       </div>
+
+      <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
+        <DialogContent className="max-w-5xl p-0 bg-black border-accent/20">
+          <DialogHeader className="sr-only">
+            <DialogTitle>Volt Spectacle Trailer</DialogTitle>
+            <DialogDescription>Watch the official trailer for Volt Spectacle</DialogDescription>
+          </DialogHeader>
+          <div className="relative w-full aspect-video">
+            <video
+              className="w-full h-full"
+              controls
+              autoPlay
+              src="/videos/hero-bg.mp4"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
